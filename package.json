@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "build": "npx tsc",
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "postinstall": "npx puppeteer install"
   },
   "keywords": [],
   "author": "",
