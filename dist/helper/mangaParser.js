@@ -99,7 +99,9 @@ export const parseMangaList = (html_data) => {
     return mangaList;
 };
 export const parseChapterImages = (url) => __awaiter(void 0, void 0, void 0, function* () {
-    const browser = yield puppeteer.launch({ headless: true });
+    const browser = yield puppeteer.launch({
+        headless: true,
+    });
     const page = yield browser.newPage();
     yield page.goto(url, {
         waitUntil: "networkidle2",
