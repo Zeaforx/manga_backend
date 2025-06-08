@@ -5,6 +5,7 @@ import {
   MangaDetails,
   MangaList,
 } from "../types/manga.type.js";
+import { executablePath } from "puppeteer";
 import puppeteer from "puppeteer";
 import { scrollPageToLoadImages } from "./autoScroller.js";
 export const parseMangaDetails = (html_data: any) => {
@@ -103,7 +104,10 @@ export const parseMangaList = (html_data: any) => {
 };
 
 export const parseChapterImages = async (url: string) => {
-  const browser = await puppeteer.launch({ headless: true });
+  const browser = await puppeteer.launch({
+    headless: true,
+    executablePath: executablePath(),
+  });
   const page = await browser.newPage();
 
   await page.goto(url, {
