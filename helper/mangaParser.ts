@@ -103,7 +103,7 @@ export const parseMangaList = (html_data: any) => {
 };
 
 export const parseChapterImages = async (url: string) => {
-  const browser = await puppeteer.launch({ headless: false });
+  const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
 
   await page.goto(url, {
