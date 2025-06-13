@@ -84,16 +84,22 @@ export const parseMangaList = (html_data) => {
     };
     const mangaList = [];
     $(key.name).each((index, element) => {
-        const coverImg = $(key.image).attr("src");
-        const name = $(key.name).text();
-        const description = $(key.description).text();
-        const mangaId = $(key.mangaId).attr("href");
+        const coverImgElement = $(key.image).toArray()[index];
+        const coverImg = coverImgElement ? $(coverImgElement).attr("src") : "";
+        // const coverImg = $(key.image).attr("src");
+        const nameElement = $(key.name).toArray()[index];
+        const name = nameElement ? $(nameElement).text() : "";
+        const descriptionElement = $(key.description).toArray()[index];
+        const description = descriptionElement ? $(descriptionElement).text() : "";
+        const mangaIdElement = $(key.mangaId).toArray()[index];
+        const mangaId = mangaIdElement ? $(mangaIdElement).attr("href") : "";
         const manga = {
             name: name || "",
             coverImg: coverImg || "",
             description: description || "",
             mangaId: (mangaId === null || mangaId === void 0 ? void 0 : mangaId.replace("https://mangakatana.com/manga/", "")) || "",
         };
+        console.log(manga);
         mangaList.push(manga);
     });
     return mangaList;
